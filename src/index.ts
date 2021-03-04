@@ -5,7 +5,7 @@ export class ClassState {
 
   public setState(setter: (state: this) => void) {
     setter(this)
-    this.update()
+    this.updateState()
   }
 
   public getState(): this {
@@ -14,12 +14,12 @@ export class ClassState {
     return this
   }
 
-  public watch() {
+  public watchState() {
     const [, force] = useReducer((c) => c + 1, 0)
     this.force = force
   }
 
-  private update() {
+  private updateState() {
     this.force && this.force()
   }
 }

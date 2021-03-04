@@ -5,18 +5,18 @@ const react_1 = require("react");
 class ClassState {
     setState(setter) {
         setter(this);
-        this.update();
+        this.updateState();
     }
     getState() {
         const [, force] = react_1.useReducer((c) => c + 1, 0);
         this.force = force;
         return this;
     }
-    watch() {
+    watchState() {
         const [, force] = react_1.useReducer((c) => c + 1, 0);
         this.force = force;
     }
-    update() {
+    updateState() {
         this.force && this.force();
     }
 }

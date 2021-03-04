@@ -1,9 +1,13 @@
 # React Class State (react-class-state)
-Very small, fast, and unopinionated. You can use just like you want, state-rerenders are minimum especially if you use state.watch(). Everything is type supported and smooth!
+
+Very small, fast, and unopinionated. You can use just like you want, state-rerenders are minimum especially if you use state.watchState(). Everything is type supported and smooth!
 
 ---
+
 ### Usage
+
 First, create a React app, then paste this to your console:
+
 ```
 // For NPM
 npm install react-class-state
@@ -37,8 +41,7 @@ todoState.fetchTodos()
 // You can change the state from anywhere, in regular files or inside class components/function components
 const response = await fetch("https://jsonplaceholder.typicode.com/todos")
 todoState.setState(async (state) => (state.todos = await response.json()))  */
-``` 
-
+```
 
 #### Usage
 
@@ -73,17 +76,17 @@ const App: React.FC = () => {
     })()
   }, [])
   return <h1>React Class State</h1>
-  
+
 }
 
 ```
 
-
 #### You can use the system however you want.
+
 ```TSX
-// If you use 'todoState.watch()' in your parent, you don't need to use it in another file.
+// If you use 'todoState.watchState()' in your parent, you don't need to use it in another file.
 export const OtherUse: React.FC = () => {
-  todoState.watch()
+  todoState.watchState()
 
   return (
     <div>
