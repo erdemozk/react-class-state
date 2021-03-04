@@ -44,6 +44,18 @@ const response = await fetch("https://jsonplaceholder.typicode.com/todos")
 todoState.setState(async (state) => (state.todos = await response.json()))  */
 ```
 
+#### Subscribe State
+
+```TS
+todoState.subscribeState((currentState, previousState) => {
+  console.log({ currentState })
+  console.log({ previousState })
+  // This will re-render only once and whatever you change here will also change the React Component State
+  // Don't use setState here if you don't want a stackoverflow
+  todoState.push({ id:101, title:"New todo from subscribe!" })
+})
+```
+
 #### Usage
 
 ```TSX
