@@ -12,7 +12,8 @@ const App = () => {
   useEffect(() => {
     const fetchTodos = async () => {
       const response = await fetch("https://jsonplaceholder.typicode.com/todos")
-      setState(async (state) => (state.todos = await response.json()))
+      const data = await response.json()
+      setState((state) => (state.todos = data))
     }
     fetchTodos()
   }, [])

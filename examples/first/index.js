@@ -7,7 +7,8 @@ class TodoState extends ClassState {
 
   async fetchTodos() {
     const response = await fetch("https://jsonplaceholder.typicode.com/todos")
-    this.setState(async (state) => (state.todos = await response.json()))
+    const data = await response.json()
+    this.setState((state) => (state.todos = data))
   }
 }
 const todoState = new TodoState()

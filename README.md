@@ -28,7 +28,8 @@ class TodoState extends ClassState {
   // If you want, you can use actions inside the class, if you want you can also follow the next usages
   async fetchTodos() {
     const response = await fetch("https://jsonplaceholder.typicode.com/todos")
-    this.setState(async (state) => (state.todos = await response.json()))
+    const data = await response.json()
+    this.setState((state) => (state.todos = data))
   }
 }
 const todoState = new TodoState()
@@ -70,10 +71,12 @@ export default App
 const App: React.FC = () => {
   const { setState } = todoState.getState()
   useEffect(() => {
-    ;(async () => {
+    const fetchTodos = async () => {
       const response = await fetch("https://jsonplaceholder.typicode.com/todos")
-      todoState.setState(async (state) => (state.todos = await response.json()))
-    })()
+      const data = await response.json()
+      setState((state) => (state.todos = data))
+    }
+    fetchTodos()
   }, [])
   return <h1>React Class State</h1>
 
