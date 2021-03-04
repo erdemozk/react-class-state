@@ -1,0 +1,32 @@
+{
+  "name": "react-class-state",
+  "version": "1.0.0",
+  "description": "Easy State Management For React With Classes",
+  "main": "index.js",
+  "scripts": {
+    "dev": "ts-node src/index.ts",
+    "build": "tsc",
+    "start": "node ./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ragokan/react-class-state.git"
+  },
+  "keywords": [
+    "React",
+    "State",
+    "Management"
+  ],
+  "author": "ragokan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ragokan/react-class-state/issues"
+  },
+  "homepage": "https://github.com/ragokan/react-class-state#readme",
+  "devDependencies": {
+    "@types/react": "^17.0.2",
+    "react": "^17.0.1",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.2.2"
+  }
+}
