@@ -9,10 +9,8 @@ Very small, fast, and unopinionated. You can use just like you want, state-reren
 First, create a React app, then paste this to your console:
 
 ```
-// For NPM
 npm install react-class-state
-
-// For Yarn
+//OR
 yarn add react-class-state
 ```
 
@@ -33,13 +31,15 @@ class TodoState extends ClassState {
   }
 }
 const todoState = new TodoState()
+// You can call this in react components, too.
+// If you do this process on server or outside of component, you can use this as SSR with NextJS
 todoState.fetchTodos()
 ```
 
 #### Other Way To Change State
 
 ```TSX
-// You can change the state from anywhere, in regular files or inside class components/function components
+// You can change the state from anywhere, in regular files or inside class components/function components, no matter whether it is async or not,
 const response = await fetch("https://jsonplaceholder.typicode.com/todos")
 todoState.setState(async (state) => (state.todos = await response.json()))  */
 ```
@@ -47,10 +47,7 @@ todoState.setState(async (state) => (state.todos = await response.json()))  */
 #### Usage
 
 ```TSX
-import React from "react"
-import {todoState} from "./TodoState"
-
-const App: React.FC = () => {
+const App = () => {
   const { todos } = todoState.getState()
   return (
     <div>
@@ -60,16 +57,25 @@ const App: React.FC = () => {
     </div>
   )
 }
+```
 
-export default App
+#### You can use the system however you want.
+
+```TSX
+// If you use 'todoState.watchState()' in your parent, you don't need to use it in another file.
+const App = () => {
+  todoState.watchState()
+  // Rest of the App
+}
 
 ```
 
 #### Changing state inside components
 
 ```TSX
-const App: React.FC = () => {
+const App = () => {
   const { setState } = todoState.getState()
+
   useEffect(() => {
     const fetchTodos = async () => {
       const response = await fetch("https://jsonplaceholder.typicode.com/todos")
@@ -78,26 +84,7 @@ const App: React.FC = () => {
     }
     fetchTodos()
   }, [])
-  return <h1>React Class State</h1>
 
+  // Rest of the App
 }
-
-```
-
-#### You can use the system however you want.
-
-```TSX
-// If you use 'todoState.watchState()' in your parent, you don't need to use it in another file.
-export const OtherUse: React.FC = () => {
-  todoState.watchState()
-
-  return (
-    <div>
-      {todoState.todos.map((todo) => (
-        <div key={todo.id}>{todo.title}</div>
-      ))}
-    </div>
-  )
-}
-
 ```
