@@ -21,4 +21,5 @@ class ClassState {
     }
 }
 exports.ClassState = ClassState;
+exports.default = ClassState;
 //# sourceMappingURL=index.js.map

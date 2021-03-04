@@ -23,3 +23,6 @@ export class ClassState {
     this.force && this.force()
   }
 }
+
+// You can use whichever you want as export
+export default ClassState

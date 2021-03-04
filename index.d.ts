@@ -5,3 +5,4 @@ export declare class ClassState {
     watch(): void;
     private update;
 }
+export default ClassState;
